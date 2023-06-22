@@ -7,7 +7,7 @@ index = 0
 now = time.strftime(" %A %Y%m%d-%H%M%S")
 
 if __name__ == '__main__':
-
+    print("Time below")
     print(f"It is{now}")
     while True:
         user_action = input("Type add, show, edit or exit: ")
