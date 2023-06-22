@@ -15,7 +15,8 @@ def get_todos(filepath_local = FILEPATH):
 
 
 def write_todos(todos_arg, filepath_local = FILEPATH):
-    """todo_write - list to write"""
+    """todos_arg - list to write
+    """
     with open(filepath_local, 'w') as file:
         file.writelines(todos_arg)
 
