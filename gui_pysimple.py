@@ -1,21 +1,26 @@
-import modules.functions as fn
+import functions as fn
 """
 Can be used in tkinter, or designed in PAGE app. 
 """
 import PySimpleGUI as sg
 import time
+import os
 
-sg.theme("Default1")
+if not os.path.exists("todos.txt"):
+    with open("todos.txt", 'w') as file:
+        pass
+
+sg.theme("Dark")
 
 clock = sg.Text('', key='clock_key')
 label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip="Enter todo", key="todo_inbox_key")
 #add_button = sg.Button("Add")
-add_button = sg.Button(image_source=r'files/images/add.png', mouseover_colors="LightBlue2",
+add_button = sg.Button(key='Add', image_source=r'files/images/add.png', mouseover_colors="LightBlue2",
                        tooltip='Add Todo')
 edit_button = sg.Button("Edit")
 #complete_button = sg.Button("Complete")
-complete_button = sg.Button(image_source=r'files/images/complete.png')
+complete_button = sg.Button(key= 'Complete', image_source=r'files/images/complete.png')
 exit_button = sg.Button("Exit")
 
 list_box = sg.Listbox(values=fn.get_todos(), key="todos_listbox_key",
@@ -26,7 +31,7 @@ window = sg.Window("My to-do App",
                            [label],
                            [input_box, add_button],
                            [list_box, edit_button, complete_button]],
-                   font=('Helvetica', 20))
+                   font=('Helvetica', 16))
 
 while True:
     win_event, win_values = window.read(timeout=10)
@@ -48,7 +53,7 @@ while True:
                 fn.write_todos(todos)
                 window['todos_listbox_key'].update(values=todos)
             except IndexError:
-                sg.popup("Please select an item first", font=('Helvetica', 20))
+                sg.popup("Please select an item first", font=('Helvetica', 16))
         case "Complete":
             try:
                 todo_to_complete = win_values['todos_listbox_key'][0]

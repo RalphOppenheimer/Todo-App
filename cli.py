@@ -1,5 +1,5 @@
 # import modules.functions as fn
-from modules.functions import write_todos, get_todos
+from functions import write_todos, get_todos
 # from modules import functions
 import time
 prompt = "Type add or show:"
