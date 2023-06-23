@@ -5,14 +5,17 @@ Can be used in tkinter, or designed in PAGE app.
 import PySimpleGUI as sg
 import time
 
-sg.theme("Black")
+sg.theme("Default1")
 
 clock = sg.Text('', key='clock_key')
 label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip="Enter todo", key="todo_inbox_key")
-add_button = sg.Button("Add")
+#add_button = sg.Button("Add")
+add_button = sg.Button(image_source=r'files/images/add.png', mouseover_colors="LightBlue2",
+                       tooltip='Add Todo')
 edit_button = sg.Button("Edit")
-complete_button = sg.Button("Complete")
+#complete_button = sg.Button("Complete")
+complete_button = sg.Button(image_source=r'files/images/complete.png')
 exit_button = sg.Button("Exit")
 
 list_box = sg.Listbox(values=fn.get_todos(), key="todos_listbox_key",
